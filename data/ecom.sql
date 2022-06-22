@@ -4,8 +4,8 @@ create table categorie(
     id int not null auto_increment primary key,
     nom varchar(40)
 );
-
-insert into categorie values (null,'vetement'),(null,'chaussure'),(null,'accessoire');
+insert into categorie values (null,'Produit laitier'),(null,'Boisson'),(null,'Fruit et legume'),(null,'Matiere grasse'),
+(null,'Cereales et derivés-legumineuse') ,(null,'Produit sucre'),(null,'Viande-poisson-oeuf');
 
 create table photo(
     id int not null auto_increment primary key,
@@ -37,8 +37,39 @@ insert into administrateur values(null,'sarobidy rakoto','sarobidy@yahoo.fr','12
 create table stock(
     id int not null auto_increment primary key,
     id_produit int not null,
-    quantite int
+    quantite int,
+    date_entree datetime,
+    foreign key (id_produit) references produit(id)
 );
+
+create table modepaiement(
+    id int not null auto_increment primary key,
+    nom varchar(40)
+);
+insert into modepaiement values (null,'paypal'),(null,'visa');
+
+create table vente(
+    id int not null auto_increment primary key,
+    date_vente datetime,
+    email varchar(50),
+    contact varchar(20),
+    adresse text,
+    id_modepaiement int not null,
+    foreign key (id_modepaiement) references modepaiement(id)
+);
+
+create table vente_detail(
+    id int not null auto_increment primary key,
+    id_vente int not null,
+    id_produit int not null,
+    quantite int,
+    prix_unitaire float,
+    foreign key (id_vente) references vente(id),
+    foreign key (id_produit) references produit(id)
+);
+
+
+select v.id_produit as id,sum(s.quantite) as entree, sum(v.quantite) as sortie from stock as s join vente as v on s.id_produit = v.id_produit;
 
 
 

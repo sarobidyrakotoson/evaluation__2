@@ -38,10 +38,31 @@ class Welcome extends CI_Controller {
 
 	public function acheter_un()
 	{
+		$data['id']= $this->input->get('id');
+		$data['nom']= $this->input->get('nom');
+		$data['prix']= $this->input->get('prix');
+		$data['descri']= $this->input->get('descri');
+		$data['photo']= $this->input->get('photo');
+		$data['ext'] = $this->input->get('ext');
 		$this->load->helper('assets');
-		$this->load->view('shop-single');
+		$this->load->view('shop-single',$data);
 		
 	}
+
+	public function acheter_ceci()
+	{
+		$qt = $this->input->post('product-quanity');
+		$id = $this->input->post('id');
+		$submit = $this->input->post('submit');
+		if( $submit == 'buy' ){
+			$this->load->helper('assets');
+		$this->load->view('checkout');
+		}
+		else{
+
+		}
+	}
+
 
 	public function panier()
 	{

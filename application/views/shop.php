@@ -56,33 +56,20 @@
                                 <img class="card-img rounded-0 img-fluid" src="<?php echo img_loader( $produit[$i]['photo'], $produit[$i]['ext']); ?>">
                                 <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                     <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.php"><i class="far fa-eye"></i></a></li>
+                                        <li><a class="btn btn-success text-white mt-2" href="<?php echo site_url('Welcome/acheter_un')."?id=".$produit[$i]['id']."&nom=".$produit[$i]['nom']."&prix=".$produit[$i]['prix']."&descri=".$produit[$i]['descri']."&photo=".$produit[$i]['photo']."&ext=".$produit[$i]['ext']; ?>"><i class="far fa-eye"></i></a></li>
                                         <li><a class="btn btn-success text-white mt-2" href="shop-single.php"><i class="fas fa-cart-plus"></i></a></li>
+                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.php"><i class="fas fa-shopping-cart"></i></a></li>
+                                        
                                     </ul>
                                 </div>
                             </div>
                             <div class="card-body">
                                 <a href="shop-single.php" class="h3 text-decoration-none"><?php echo $produit[$i]['nom']; ?></a>
                                 <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                    <li>M/L/X/XL</li>
-                                    <li class="pt-2">
-                                        <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                                    </li>
+                                    
                                 </ul>
-                                <ul class="list-unstyled d-flex justify-content-center mb-1">
-                                    <li>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                    </li>
-                                </ul>
-                                <p class="text-center mb-0"><?php echo $produit[$i]['prix']; ?></p>
+                               
+                                <p class="text-center mb-0"><?php echo $produit[$i]['prix']; ?> Ar</p>
                             </div>
                         </div>
                     </div>
