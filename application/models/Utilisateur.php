@@ -4,7 +4,7 @@
 class Utilisateur extends CI_Model {
 
     public function login($email,$mdp) {
-        $request = " SELECT * from administrateur where email = '%s' and mdp = '%s' ";
+        $request = " SELECT * from utilisateur where email = '%s' and mdp = '%s' ";
         $request = sprintf($request, $email,$mdp);
         $query = $this->db->query($request);
         $utilisateur = array();

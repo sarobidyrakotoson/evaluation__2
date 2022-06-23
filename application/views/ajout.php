@@ -37,34 +37,135 @@ https://templatemo.com/tm-559-zay-shop
             <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
                 Zay
             </a>
-
+            
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
+            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
+                <div class="flex-fill">
+                    
+                </div>
+                <div class="navbar align-self-center d-flex">
+                    <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
+                        
+                    </div>
+                    <!-- notification -->
+                    <a class="nav-icon position-relative text-decoration-none" href="<?php echo site_url('Welcome/sign_out'); ?>">
+                        <i class="fa fa-fw fa-sign-out-alt text-dark mr-3"></i>
+                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
+                    </a>
+                </div>
         </div>
     </nav>
     <!-- Close Header -->
-
-    <!-- Modal -->
-    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="w-100 pt-1 mb-5 text-right">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <section class="container py-5">
+        <div class="row text-center pt-3">
+            <div class="col-lg-6 m-auto">
+                <h1 class="h1">C R U D</h1>
+                <p>
+                    
+                </p>
             </div>
-            <form action="" method="get" class="modal-content modal-body border-0 p-0">
-                <div class="input-group mb-2">
-                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
-                    <button type="submit" class="input-group-text bg-success text-light">
-                        <i class="fa fa-fw fa-search text-white"></i>
-                    </button>
-                </div>
-            </form>
         </div>
-    </div>
-
-
-
+        <div class="row">
+            <div class="col-12 col-md-4 p-5 mt-3">
+                <form action="<?php echo site_url('Welcome/recette'); ?>" method="post">
+            <div class="mb-3">
+                    <label for="inputmessage">Nouvelle recette</label>
+                </div>
+                <div class="mb-3">
+                    <label for="inputmessage">Nom</label>
+                    <input type="text" class="form-control mt-1" id="message" name="nom" placeholder="description" rows="5" required>
+                </div>
+                <div class="mb-3">
+                    <input type="submit" class="btn btn-success"  value="AJOUTER" id="message" name="desc" placeholder="description" rows="5" required>
+                </div>
+            </div></form>
+            <div class="col-12 col-md-4 p-5 mt-3">
+            <form action="<?php echo site_url('Welcome/ingredient'); ?>" method="post">
+            <div class="mb-3">
+                    <label for="inputmessage">Recette</label>
+                    <select  class="form-control mt-1" id="subject" name="recette" placeholder="Subject">
+                   <?php for($i = 0;$i<count($recette);$i++){ ?>
+                       <option value="<?php echo $recette[$i]['id']; ?>"><?php echo $recette[$i]['nom']; ?>  </option>
+                       <?php } ?>
+                   </select>
+                </div>
+                <div class="mb-3">
+                    <label for="inputmessage">Ingredient</label>
+                    <select  class="form-control mt-1" id="subject" name="prod" placeholder="Subject">
+                   <?php for($i = 0;$i<count($produit);$i++){ ?>
+                       <option value="<?php echo $produit[$i]['id']; ?>"><?php echo $produit[$i]['nom']; ?> <?php echo $produit[$i]['quantite']; ?> <?php echo $produit[$i]['unite']; ?></option>
+                       <?php } ?>
+                   </select>
+                </div>
+                <div class="mb-3">
+                    <label for="inputmessage">Pourcentage</label>
+                    <input type="number" class="form-control mt-1" id="message" name="prc" placeholder="Quantite" rows="5" required>
+                </div>
+                <div class="mb-3">
+                    <input type="submit" class="btn btn-success"  value="AJOUTER" id="message" name="desc" placeholder="description" rows="5" required>
+                </div>
+                </form>
+            </div>
+            <div class="col-12 col-md-4 p-5 mt-3">
+            <form class="col-md-9 m-auto" method="post" action="<?php echo site_url('Welcome/stocker'); ?>" role="form" >
+            <div class="mb-3">
+                   <label for="inputsubject">Entrée de stock</label>
+                  
+               </div>
+               <div class="mb-3">
+                   <label for="inputsubject">Produit</label>
+                   <select  class="form-control mt-1" id="subject" name="prod" placeholder="Subject">
+                   <?php for($i = 0;$i<count($produit);$i++){ ?>
+                       <option value="<?php echo $produit[$i]['id']; ?>"><?php echo $produit[$i]['nom']; ?></option>
+                       <?php } ?>
+                   </select>
+               </div>
+               <div class="mb-3">
+                   <label for="inputsubject">Quantite</label>
+                   <input type="number" class="form-control mt-1" id="subject" name="qte" placeholder="Quantite" required>
+               </div>
+               <div class="form-group col-md-6 mb-3">
+                   <input type="submit" class="btn btn-success" value="ENTRER" id="name" name="name" placeholder="Name">
+               </div>
+           </form>
+            </div>
+        </div>
+    </section>
+    <section class="bg-light">
+        <div class="container py-5">
+            <div class="row text-center py-3">
+                <div class="col-lg-6 m-auto">
+                    <h1 class="h1">Recharge non valide </h1>
+                </div>
+            </div>
+            <div class="row">
+                <table style="width: 700px">
+                    <tr>
+                        <th>Montant</th>
+                        <th>Date</th>
+                        <th>Nom</th>
+                        <th>Email</th><th></th>
+                    </tr>
+                   
+                    <?php for($i = 0;$i<count($nonval);$i++){ ?>
+                        <tr>
+                        <td><?php echo $nonval[$i]['valeur']; ?></td>
+                        <td><?php echo $nonval[$i]['date']; ?></td>
+                        <td><?php echo $nonval[$i]['nom']; ?></td>
+                        <td><?php echo $nonval[$i]['email']; ?></td>
+                        <td><form action="<?php echo site_url('Welcome/valider'); ?>" method="post">
+                        <input type="hidden" name="id" value="<?php echo $nonval[$i]['id']; ?>">
+                         <button type="submit" class="form-control mt-1" style="background-color: #ccd9e6e"><i class="fa fa-fw fa-check text-dark mr-1"></i></button></td>
+                         </form> </tr>
+                        <?php } ?>
+                    
+                </table>
+            </div>
+        </div>
+    </section> 
 
     <!-- Start Contact -->
     <div class="container py-5">
@@ -94,7 +195,20 @@ https://templatemo.com/tm-559-zay-shop
                     <label for="inputmessage">Description</label>
                     <textarea class="form-control mt-1" id="message" name="desc" placeholder="description" rows="5" required></textarea>
                 </div>
-                
+                <div class="row">
+                    <div class="form-group col-md-6 mb-3">
+                        <label for="inputname">Quantite</label>
+                        <input type="number" class="form-control mt-1" id="desi" name="quantite" placeholder="quantite" required>
+                    </div>
+                    <div class="form-group col-md-6 mb-3">
+                        <label for="inputemail">Unite</label>
+                        <select  class="form-control mt-1" id="subject" name="unite" placeholder="Subject">
+                    <?php for($i = 0;$i<count($unite);$i++){ ?>
+                        <option value="<?php echo $unite[$i]['id']; ?>"><?php echo $unite[$i]['unite']; ?></option>
+                        <?php } ?>
+                    </select>
+                    </div>
+                </div>
                 <div class="mb-3">
                     <label for="inputsubject">Photo</label>
                     <input type="file" class="form-control mt-1" id="subject" name="userfile" placeholder="Subject" required>
@@ -118,16 +232,16 @@ https://templatemo.com/tm-559-zay-shop
                 <table style="width: 700px">
                     <tr>
                         <th>designation</th>
-                        <th>photo</th>
-                        <th>ext</th>
+                        <th>PRIX</th>
+                        <th>Cate</th>
                         <th>photo</th>
                     </tr>
                    
-                    <?php for($i = 0;$i<count($produit);$i++){ ?>
+                    <?php for($i = 0;$i<3;$i++){ ?>
                         <tr>
                         <td><?php echo $produit[$i]['nom']; ?></td>
-                        <td><?php echo $produit[$i]['photo']; ?></td>
-                        <td><?php echo $produit[$i]['ext']; ?></td>
+                        <td><?php echo $produit[$i]['prix']; ?></td>
+                        <td><?php echo $produit[$i]['id_cate']; ?></td>
                         <td><img src="<?php echo img_loader( $produit[$i]['photo'], $produit[$i]['ext']); ?>" style="width: 100px" alt="produit"></td>
                         </tr>
                         <?php } ?>
@@ -136,9 +250,7 @@ https://templatemo.com/tm-559-zay-shop
             </div>
         </div>
     </section>
-    <!-- End Contact -->
-
-
+  
     <!-- Start Footer -->
     <footer class="bg-dark" id="tempaltemo_footer">
         <div class="container">

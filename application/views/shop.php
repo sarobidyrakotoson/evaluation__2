@@ -49,7 +49,8 @@
                     </div>
                 </div>
                 <div class="row">
-                <?php for($i = 0;$i<count($produit);$i++){ ?>
+                <?php for($i = 0;$i<count($produit);$i++){
+                     ?>
                     <div class="col-md-4">
                         <div class="card mb-4 product-wap rounded-0">
                             <div class="card rounded-0">
@@ -57,9 +58,7 @@
                                 <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                     <ul class="list-unstyled">
                                         <li><a class="btn btn-success text-white mt-2" href="<?php echo site_url('Welcome/acheter_un')."?id=".$produit[$i]['id']."&nom=".$produit[$i]['nom']."&prix=".$produit[$i]['prix']."&descri=".$produit[$i]['descri']."&photo=".$produit[$i]['photo']."&ext=".$produit[$i]['ext']; ?>"><i class="far fa-eye"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.php"><i class="fas fa-cart-plus"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.php"><i class="fas fa-shopping-cart"></i></a></li>
-                                        
+                                        <li><a class="btn btn-success text-white mt-2" href="javascript:insertPanier(<?php echo $produit[$i]['id']; ?>,'<?php echo $produit[$i]['nom']; ?>',<?php echo $produit[$i]['prix']; ?>,'<?php echo $produit[$i]['photo'].'.'.$produit[$i]['ext']; ?>')"><i class="fas fa-cart-plus"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -73,7 +72,7 @@
                             </div>
                         </div>
                     </div>
-                    <?php } ?>
+                    <?php }   ?>
                 </div>
                 <div div="row">
                     <ul class="pagination pagination-lg justify-content-end">
@@ -94,5 +93,36 @@
     </div>
     <!-- End Content -->
 
-  
+    <script>
+        function insertPanier(idP,nom,pr,img){
+    //console.log("soa");
+    if(document.getElementById(idP).value<0 || document.getElementById(idP).value==""){
+      //  alert("Quantite non valide");
+        var a=document.getElementById("erreur");
+        a.innerHTML="Quantite non valide";
+    }else{
+        var tab = [];
+        let pan = {
+            idProduit : idP,
+            nomProduit : nom,
+            qte : document.getElementById(idP).value,
+            image : img,
+            pu : pr
+        }
+        console.log("soa");
+        if(localStorage.getItem("pannier") != undefined){
+            tab = JSON.parse(localStorage.getItem("pannier"));
+        }else{
+            localStorage.setItem("pannier",JSON.stringify(pan));
+            alert("Pannier ajouter!");
+        }
+        tab.push(pan);
+        localStorage.setItem("pannier",JSON.stringify(tab));
+        alert("Pannier ajouter!");
+    }
+    console.log(localStorage.getItem("pannier"));
+    //localStorage.clear();
+}
+
+    </script>
     <?php include 'footer.php';?>
